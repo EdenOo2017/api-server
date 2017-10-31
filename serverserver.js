@@ -16,7 +16,6 @@ server.listen(port, () => {
   console.log('Server is up');
 });
 
-
 //#region API......................................................
 
 //#region Get Status 1 to 5 .......................................
@@ -90,7 +89,11 @@ function calcTime() {
 }
 
 io.sockets.on('connection', function (socket) {
-  console.log('connected!!');
+  console.log('connected!');
+
+  setInterval(function() {
+    socket.emit('cow', "Data!");
+  }, 3000 * 30 * 60); 
 
   //#region Update Status 1 to 5....................................
 
